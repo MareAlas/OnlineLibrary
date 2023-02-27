@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('librarian')->group(function(){
+Route::prefix('librarian')->middleware(['auth', 'isLibrarian'])->group(function(){
     Route::get('/authors', [App\Http\Controllers\Librarian\AuthorController::class, 'index'])->name('index');
 });
 
