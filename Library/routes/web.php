@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/*
+Route::controller(App\Http\Controllers\Librarian\AuthorController::class)->group(function () {
+    Route::get('/authors', 'index');
+});
+*/
+
+Route::get('/librarian/authors', [App\Http\Controllers\Librarian\AuthorController::class, 'index'])->name('index');
