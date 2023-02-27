@@ -21,10 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-/*
-Route::controller(App\Http\Controllers\Librarian\AuthorController::class)->group(function () {
-    Route::get('/authors', 'index');
+Route::prefix('librarian')->group(function(){
+    Route::get('/authors', [App\Http\Controllers\Librarian\AuthorController::class, 'index'])->name('index');
 });
-*/
 
-Route::get('/librarian/authors', [App\Http\Controllers\Librarian\AuthorController::class, 'index'])->name('index');
