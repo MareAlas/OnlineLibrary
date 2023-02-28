@@ -32,4 +32,10 @@ Route::prefix('librarian')->middleware(['auth', 'isLibrarian'])->group(function(
         Route::get('/authors/{author}/delete', 'destroy');
     });
 
+    Route::controller(App\Http\Controllers\Librarian\BookController::class)->group(function () {
+        Route::get('/books', 'index');
+        Route::get('/books/create', 'create');
+        Route::post('/books', 'store');
+    });
+
 });
