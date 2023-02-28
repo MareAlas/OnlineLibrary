@@ -39,7 +39,7 @@ class AuthorController extends Controller
             $author->image          = $uploadPath.$filename;           
         }
         $author->save();
-        return redirect('authors/')->with('message', 'Author created successufully');
+        return redirect('librarian/authors/')->with('message', 'Author created successufully');
     }
 
     public function edit(Author $author)
