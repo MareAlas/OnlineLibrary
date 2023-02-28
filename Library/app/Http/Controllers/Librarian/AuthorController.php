@@ -11,7 +11,8 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        return view('librarian.authors.index');
+        $authors = Author::all();
+        return view('librarian.authors.index', compact('authors'));
     }
 
     public function create()
@@ -37,7 +38,7 @@ class AuthorController extends Controller
             $author->image          = $uploadPath.$filename;           
         }
         $author->save();
-        return redirect('authors/index')->with('message', 'Author created successufully');
+        return redirect('authors/')->with('message', 'Author created successufully');
     }
 
 }
