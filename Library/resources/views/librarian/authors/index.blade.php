@@ -11,7 +11,7 @@
                 </h3>
             </div>
             <div class="card-body">
-                <table>
+                <table class="table table-bordared table-striped">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -27,8 +27,10 @@
                             <td>{{ $authorItem->name }}</td>
                             <td>{{ $authorItem->surname }}</td>
                             <td>
-                                <a>Edit</a>
-                                <a>Delete</a>
+                                <a href="{{ url('librarian/authors/'.$authorItem->id.'/edit') }}" class="btn btn-success">Edit</a>
+                                <a href="{{ url('librarian/authors/'.$authorItem->id.'/delete') }}" 
+                                    onclick="return confirm('Are you sure want to delete this data?')" 
+                                    class="btn btn-danger">Delete</a>
                             </td>
                         </tr> 
                         @empty

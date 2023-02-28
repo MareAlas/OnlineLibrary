@@ -41,4 +41,8 @@ class AuthorController extends Controller
         return redirect('authors/')->with('message', 'Author created successufully');
     }
 
+    public function edit(Author $author)
+    {
+        return view('librarian.authors.edit', compact('author'));
+    }
 }

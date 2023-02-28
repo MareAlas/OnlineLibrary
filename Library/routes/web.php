@@ -27,6 +27,8 @@ Route::prefix('librarian')->middleware(['auth', 'isLibrarian'])->group(function(
     Route::get('/authors', 'index');
     Route::get('/authors/create', 'create');
     Route::post('/authors', 'store');
+    Route::get('/authors/{author}/edit', 'edit');
+    Route::put('/authors/{author}', 'update');
     });
 
 });
