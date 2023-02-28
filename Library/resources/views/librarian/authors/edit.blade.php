@@ -16,10 +16,11 @@
                             <div>{{ $error }}</div>
                         @endforeach
                     </div>
-                @endif
-                <form action="{{ url('librarian/authors') }}" method="POST" enctype="multipart/form-data">
+                @endif  
+                <form action="{{ url('librarian/authors/'.$author->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+
                     <div class="mb-3">
                         <label>Author Name</label>
                         <input type="text" name="name" value="{{ $author->name }}" class="form-control" />
@@ -31,7 +32,7 @@
                     <div class="mb-3">
                         <label>Image</label>
                         <input type="file" name="image" class="form-control"/>
-                        <img src="{{ asset("$author->image") }}" style="width:50px; height50px;" alt="Slider" />
+                        <img src="{{ asset("$author->image") }}" style="width:50px; height50px;" />
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Update</button>

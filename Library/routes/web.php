@@ -23,12 +23,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('librarian')->middleware(['auth', 'isLibrarian'])->group(function(){
 
-    Route::controller(App\Http\Controllers\Librarian\AuthorController::class)->group(function () {
-    Route::get('/authors', 'index');
-    Route::get('/authors/create', 'create');
-    Route::post('/authors', 'store');
-    Route::get('/authors/{author}/edit', 'edit');
-    Route::put('/authors/{author}', 'update');
+        Route::controller(App\Http\Controllers\Librarian\AuthorController::class)->group(function () {
+        Route::get('/authors', 'index');
+        Route::get('/authors/create', 'create');
+        Route::post('/authors', 'store');
+        Route::get('/authors/{author}/edit', 'edit');
+        Route::put('/authors/{author}', 'update');
+        Route::get('/authors/{author}/delete', 'destroy');
     });
 
 });
