@@ -19,7 +19,7 @@
 <body>
     <div id="app">
         @include('layouts.inc.librarian.navbar')
-       
+
         <main>
             @yield('content')
         </main>

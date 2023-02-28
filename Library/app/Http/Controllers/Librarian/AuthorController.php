@@ -11,4 +11,9 @@ class AuthorController extends Controller
     {
         return view('librarian.authors.index');
     }
+
+    public function create()
+    {
+        return view('librarian.authors.create');
+    }
 }
