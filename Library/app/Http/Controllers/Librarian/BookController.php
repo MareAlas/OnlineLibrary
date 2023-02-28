@@ -37,4 +37,43 @@ class BookController extends Controller
         return redirect('librarian/books')->with('message', 'Book added');
     }
     
+    public function edit(Book $book)
+    {
+        $authors = Author::all();
+        return view('librarian.books.edit', compact('book', 'authors'));
+    }
+
+    public function update(BookFormRequest $request, Book $book)
+    {
+        $validatedData = $request->validated();
+
+        $author        = Author::findOrFail($validatedData['author_id'])
+                            ->books()->where('id', $book->author_id)->first();
+
+        if($author)
+        {
+            Book::where('id', $book->id)->update([
+                'title'         => $validatedData['title'],
+                'description'   => $validatedData['description'],
+                'book_number'   => $validatedData['book_number'],
+                'author_id'     => $validatedData['author_id'],
+            ]);
+    
+            return redirect('librarian/books')->with('message', 'Books updated successufully');
+        }
+        else
+        {
+            return redirect('librarian/books')->with('message', 'Author ID not found found');
+        }
+    }
+
+    public function destroy(int $book_id)
+    {
+        $book = Book::findOrFail($book_id);
+
+        $book->delete();
+        return redirect()->back()->with('message', 'Book deleted');
+    }
+
+
 }

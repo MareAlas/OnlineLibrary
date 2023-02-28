@@ -36,6 +36,9 @@ Route::prefix('librarian')->middleware(['auth', 'isLibrarian'])->group(function(
         Route::get('/books', 'index');
         Route::get('/books/create', 'create');
         Route::post('/books', 'store');
+        Route::get('/books/{book}/edit', 'edit');
+        Route::put('/books/{book}', 'update');
+        Route::get('/books/{book_id}/delete', 'destroy');
     });
 
 });
