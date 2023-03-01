@@ -16,4 +16,12 @@ class UserTest extends TestCase
         $response = $this->get('/login');
         $response->assertStatus(200);
     }
+
+    public function checking_books()
+    {
+        $book1 = Book::where('id','1');
+        $book1 = Book::where('id','5');
+
+        $this->assertTrue($book1->book_number != $book2->book_number);
+    }
 }
