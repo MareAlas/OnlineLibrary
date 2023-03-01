@@ -36,4 +36,23 @@ class UsersController extends Controller
         return redirect('librarian/users/')->with('message', 'User created successufully');
     }
  
+    public function edit(User $user)
+    {
+        return view('librarian.users.edit', compact('user'));
+    }
+
+    public function update(UsersFormRequest $request, User $user)
+    {
+        $validatedData = $request->validated();
+
+        User::where('id', $user->id)->update([
+            'name'          => $validatedData['name'],
+            'surname'       => $validatedData['surname'],
+            'email'         => $validatedData['email'],
+            'role_as'       => $validatedData['role_as'],
+            'password'      => Hash::make($validatedData['password']),
+        ]);
+
+        return redirect('librarian/users')->with('message', 'User updated successufully');
+    }
 }
