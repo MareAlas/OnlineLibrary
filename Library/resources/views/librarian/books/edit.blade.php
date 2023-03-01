@@ -1,9 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Books
+                        <a href="{{ url('librarian/books/') }}" class="btn btn-primary btn-sm text-white float-end">BACK</a>
+                    </h3>
+                </div>
         <form action="{{ url('librarian/books/'.$book->id) }}" method="POST" >
             @csrf
             @method('PUT')
@@ -35,6 +41,8 @@
             </div>
   </form>
 
+</div>
+</div> 
 </div>
 </div> 
 @endsection
