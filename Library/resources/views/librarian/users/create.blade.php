@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Add User') }}</div>
+                <div class="card-header">{{ __('Add User') }}    
+                        <a href="{{ url('librarian/users/') }}" class="btn btn-primary btn-sm text-white float-end">BACK</a>   
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ url('librarian/users') }}">
