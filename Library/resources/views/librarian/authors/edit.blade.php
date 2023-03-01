@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
             <div class="card-header">
                 <h3>Add Author
                     <a href="{{ url('librarian/authors') }}" class="btn btn-primary btn-sm text-white float-end">BACK</a>
@@ -41,5 +42,6 @@
             </div>
         </div>
     </div>
+</div> 
 </div> 
 @endsection
