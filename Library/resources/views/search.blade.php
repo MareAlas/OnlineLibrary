@@ -8,16 +8,11 @@
                 <div class="card-header">{{ __('Welcome to reader page') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-     
+              
                     <div class="col-md-6">
                         <form action="{{ url('search') }}" method="GET" >
                             <label>Search book by Title</label>
-                            <input type="search" name="search" id="search" value="{{ Request::get('search') }}" class="form-control" placeholder="Search"/>                       
+                            <input type="search" name="search" id="search" value="{{ Request::get('search') }}" class="form-control" placeholder="Search"/>              
                         </form>
                     </div>
                     <div class="col-md-6">
@@ -47,7 +42,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($books as $book)
+                                @forelse ($searchBooks as $book)
                                 <tr>
                                     <td>{{ $book->title }}</td>
                                     <th>{{ $book->book_number }}</th>

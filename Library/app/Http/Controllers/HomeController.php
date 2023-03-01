@@ -22,9 +22,34 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
     public function index()
     {
         $books = Book::all();
         return view('home', compact('books'));
     }
+
+    public function searchBook(Request $request)
+    {
+        if($request->search)
+        {
+            $searchBooks = Book::where('title', 'LIKE', '%'.$request->search.'%')->get();
+            return view('search', compact('searchBooks'));
+        }
+        elseif($request->searchByNum)
+        {
+            $searchBooks = Book::where('book_number', 'LIKE', '%'.$request->searchByNum.'%')->get();
+            return view('search', compact('searchBooks'));
+        }
+        elseif($request->searchByAuthors)
+        {
+            $searchBooks = Book::where('author_id', 'LIKE', '%'.$request->searchByAuthors.'%')->get();
+            return view('search', compact('searchBooks'));
+        }
+        else 
+        {
+            return redirect()->back();
+        }
+    }
+    
 }
