@@ -33,7 +33,7 @@
                             <td>
                                 <a href="{{ url('librarian/users/'.$user->id.'/edit') }}" class="btn btn-success">Edit</a>
                                 <a href="{{ url('librarian/users/'.$user->id.'/delete') }}" 
-                                    onclick="return confirm('Are you sure want to delete this data?')" 
+                                    onclick="return confirm('Are you sure want to delete this User?')" 
                                     class="btn btn-danger">Delete</a>
                             </td>
                         </tr> 

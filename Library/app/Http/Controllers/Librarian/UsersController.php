@@ -55,4 +55,12 @@ class UsersController extends Controller
 
         return redirect('librarian/users')->with('message', 'User updated successufully');
     }
+
+    public function destroy(int $user_id)
+    {
+        $user = User::findOrFail($user_id);
+
+        $user->delete();
+        return redirect()->back()->with('message', 'USer deleted');
+    }
 }

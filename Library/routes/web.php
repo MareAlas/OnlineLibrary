@@ -49,6 +49,6 @@ Route::prefix('librarian')->middleware(['auth', 'isLibrarian'])->group(function(
         Route::post('/users', 'store');
         Route::get('/users/{user}/edit', 'edit');
         Route::put('/users/{user}', 'update');
-        Route::get('/users/{user}/delete', 'destroy');
+        Route::get('/users/{user_id}/delete', 'destroy');
     });
 });
