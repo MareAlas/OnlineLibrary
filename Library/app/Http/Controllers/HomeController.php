@@ -45,8 +45,9 @@ class HomeController extends Controller
         }
         elseif($request->searchByAuthors)
         {
-            $searchBooks = Book::where('author_id', 'LIKE', '%'.$request->searchByAuthors.'%')->get();
-            return view('search', compact('searchBooks'));
+            $author_id = Author::where('name', 'LIKE', '%'.$request->searchByAuthors.'%')->first("id");
+            $searchBooks = Book::where('author_id', $author_id->id)->get();
+            return view('search', compact('searchBooks', 'author_id'));
         }
         else 
         {
