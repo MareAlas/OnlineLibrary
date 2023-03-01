@@ -23,7 +23,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('librarian')->middleware(['auth', 'isLibrarian'])->group(function(){
 
-        Route::controller(App\Http\Controllers\Librarian\AuthorController::class)->group(function () {
+    Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'] );
+
+    Route::controller(App\Http\Controllers\Librarian\AuthorController::class)->group(function () {
         Route::get('/authors', 'index');
         Route::get('/authors/create', 'create');
         Route::post('/authors', 'store');
@@ -41,4 +43,12 @@ Route::prefix('librarian')->middleware(['auth', 'isLibrarian'])->group(function(
         Route::get('/books/{book_id}/delete', 'destroy');
     });
 
+    Route::controller(App\Http\Controllers\Librarian\UsersController::class)->group(function () {
+        Route::get('/users', 'index');
+        Route::get('/users/create', 'create');
+        Route::post('/users', 'store');
+        Route::get('/users/{user}/edit', 'edit');
+        Route::put('/users/{user}', 'update');
+        Route::get('/users/{user}/delete', 'destroy');
+    });
 });

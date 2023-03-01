@@ -33,7 +33,7 @@ class LoginController extends Controller
     {
         if(Auth::user()->role_as == '1')
         {
-            return redirect('librarian/index'); 
+            return redirect('librarian/dashboard'); 
         }
         else 
         {
