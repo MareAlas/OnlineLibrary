@@ -46,7 +46,7 @@
                                 <tr>
                                     <td>{{ $book->title }}</td>
                                     <th>{{ $book->book_number }}</th>
-                                    <th>{{ $book->author_id }}</th>
+                                    <th>{{ $book->author->name }} {{ $book->author->surname }}</th>
                                 </tr>
                                 @empty
                                     No Books

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Author;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,8 +26,9 @@ class HomeController extends Controller
     
     public function index()
     {
+        $author = Author::all();
         $books = Book::all();
-        return view('home', compact('books'));
+        return view('home', compact('books','author'));
     }
 
     public function searchBook(Request $request)
